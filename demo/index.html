@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EXEditor Demo</title>
+    <link rel="stylesheet" href="../dist/exeditor.css" />
+    <style>
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .panel {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 12px;
+            background: #fff;
+        }
+
+        .panel h3 {
+            margin: 0 0 10px;
+            font-size: 16px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 8px 12px;
+            border: 1px solid #d3d3d3;
+            border-radius: 6px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #f2f2f2;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            background: #f7f7f7;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .preview {
+            border: 1px dashed #d1d1d1;
+            border-radius: 8px;
+            padding: 10px;
+            min-height: 160px;
+        }
+
+        .small {
+            color: #444;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="margin: 0 0 10px;">تجربة EXEditor</h1>
+        <p class="small" style="margin-top: 0;">
+            اكتب نص بتنسيق، اضغط حفظ، ثم استرجع لاحقاً بنفس التنسيق. القيمة المخزنة هي HTML داخل textarea.
+        </p>
+
+        <form id="demoForm" class="panel" method="post" action="#">
+            <textarea id="content" name="content" data-exeditor>
+<p>أهلاً! جرّب <b>Bold</b> و <i>Italic</i> والقوائم والروابط.</p>
+			</textarea>
+
+            <div class="actions">
+                <button type="button" id="btnSave">حفظ (LocalStorage)</button>
+                <button type="button" id="btnLoad">استرجاع</button>
+                <button type="button" id="btnClear">مسح التخزين</button>
+            </div>
+        </form>
+
+        <div class="row" style="margin-top: 16px;">
+            <div class="panel">
+                <h3>HTML المخزن</h3>
+                <pre id="htmlOut"></pre>
+            </div>
+            <div class="panel">
+                <h3>معاينة (Render)</h3>
+                <div id="preview" class="preview"></div>
+                <p class="small" style="margin-bottom: 0;">
+                    مهم: لو المحتوى يأتي من مستخدمين غير موثوقين، لازم تعمل Sanitization في السيرفر قبل العرض.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../dist/exeditor.js"></script>
+    <script>
+        (function () {
+            var STORAGE_KEY = "exeditor_demo_html";
+
+            var textarea = document.getElementById("content");
+            var htmlOut = document.getElementById("htmlOut");
+            var preview = document.getElementById("preview");
+
+            var editor = EXEditor.attach(textarea, {
+                linkTargetBlank: true,
+                onChange: function (html) {
+                    htmlOut.textContent = html || "";
+                    preview.innerHTML = html || "";
+                },
+            });
+
+            function save() {
+                localStorage.setItem(STORAGE_KEY, textarea.value || "");
+                alert("تم الحفظ");
+            }
+
+            function load() {
+                var html = localStorage.getItem(STORAGE_KEY) || "";
+                editor.setHTML(html);
+                alert("تم الاسترجاع");
+            }
+
+            function clearStore() {
+                localStorage.removeItem(STORAGE_KEY);
+                editor.setHTML("");
+                alert("تم المسح");
+            }
+
+            document.getElementById("btnSave").addEventListener("click", save);
+            document.getElementById("btnLoad").addEventListener("click", load);
+            document.getElementById("btnClear").addEventListener("click", clearStore);
+
+            // Initialize output
+            editor.syncToTextarea();
+        })();
+    </script>
+</body>
+
+</html>

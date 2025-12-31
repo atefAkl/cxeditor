@@ -1,0 +1,71 @@
+/* EXEditor minimal styles */
+
+.exeditor {
+	border: 1px solid #cfcfcf;
+	border-radius: 6px;
+	overflow: hidden;
+	background: #fff;
+}
+
+.exeditor__toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	padding: 8px;
+	border-bottom: 1px solid #e5e5e5;
+	background: #f8f8f8;
+}
+
+.exeditor__btn {
+	appearance: none;
+	border: 1px solid #d3d3d3;
+	background: #ffffff;
+	border-radius: 6px;
+	padding: 6px 10px;
+	font: inherit;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	min-width: 36px;
+}
+
+.exeditor__icon {
+	display: inline-flex;
+	width: 18px;
+	height: 18px;
+	line-height: 0;
+}
+
+.exeditor__icon svg {
+	width: 18px;
+	height: 18px;
+	display: block;
+}
+
+.exeditor__btn:hover {
+	background: #f2f2f2;
+}
+
+.exeditor__btn:active {
+	background: #eaeaea;
+}
+
+.exeditor__editor {
+	min-height: 160px;
+	padding: 10px;
+	outline: none;
+	line-height: 1.5;
+}
+
+.exeditor__editor:focus {
+	box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+.exeditor__editor blockquote {
+	margin: 8px 0;
+	padding: 8px 10px;
+	border-left: 3px solid #dddddd;
+	background: #fafafa;
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+  <!-- Clear Formatting (Backspace) -->
+    <path d="M5 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5l-4-8 4-8z"/>
+    <line x1="9" y1="9" x2="15" y2="15"/>
+    <line x1="15" y1="9" x2="9" y2="15"/>
+</svg>

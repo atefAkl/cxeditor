@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" preserveAspectRatio="xMidYMid meet">
+	<text x="6" y="7" font-size="6" text-anchor="middle" dominant-baseline="middle">1</text>
+	<text x="6" y="12" font-size="6" text-anchor="middle" dominant-baseline="middle">2</text>
+	<text x="6" y="17" font-size="6" text-anchor="middle" dominant-baseline="middle">3</text>
+	<path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M10 7h10M10 12h10M10 17h10"/>
+</svg>
