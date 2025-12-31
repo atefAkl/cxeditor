@@ -12,15 +12,20 @@
 - ✅ `erase.svg` - Remove format
 - ✅ `link.svg` - Create link
 - ✅ `unlink.svg` - Remove link
+- ✅ `heading.svg` - Headings dropdown (H1-H6)
+- ✅ `align-left.svg` - Align left
+- ✅ `align-center.svg` - Align center
+- ✅ `align-right.svg` - Align right
+- ✅ `align-justify.svg` - Align justify
+- ✅ `image.svg` - Insert image
+- ✅ `table.svg` - Insert table
+- ✅ `code.svg` - Insert code block
+- ✅ `undo.svg` - Undo
+- ✅ `redo.svg` - Redo
 
 ## الأيقونات الناقصة (يجب إضافتها):
 
-### 1. `heading.svg` أو `h1.svg`
-- **الاستخدام**: Headings dropdown (H1-H6)
-- **الحجم الموصى به**: 18x18px
-- **الوصف**: أيقونة تمثل العنوان/Heading
-
-### 2. `align-left.svg`
+### لا توجد أيقونات ناقصة حالياً! ✅
 - **الاستخدام**: محاذاة النص لليسار
 - **الحجم الموصى به**: 18x18px
 - **الوصف**: خطوط محاذاة لليسار
