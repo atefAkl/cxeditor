@@ -70,6 +70,74 @@ EXEditor.attachAll('textarea[data-exeditor]', {
 npm i exeditor
 ```
 
+## Laravel (Stack) — تثبيت واستخدام
+### 1) التثبيت من GitHub (قبل النشر على npm)
+```bash
+npm i github:atefAkl/cxeditor
+```
+
+ملاحظة: اسم الحزمة داخل مشروعك يتحدد من قيمة `name` داخل `package.json` في الريبو.
+لو الاسم مازال `exeditor` فالأوامر بالأسفل ستستخدم `exeditor/...`.
+
+### 2) Laravel + Vite (الموصى بها)
+1) استيراد ملفات JS/CSS داخل Vite:
+- في `resources/js/app.js`:
+```js
+import 'exeditor/dist/exeditor.js';
+```
+- في `resources/css/app.css`:
+```css
+@import "exeditor/dist/exeditor.css";
+```
+
+2) إتاحة أيقونات SVG عبر `public/` (ضروري لأن الأيقونات تُطلب عبر HTTP):
+- انسخ المجلد:
+  - `node_modules/exeditor/dist/svg/`
+  إلى:
+  - `public/vendor/exeditor/svg/`
+
+3) في Blade:
+```html
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+
+<textarea name="content" data-exeditor></textarea>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    EXEditor.attachAll(undefined, { iconBaseUrl: '/vendor/exeditor/svg/' });
+  });
+</script>
+```
+
+4) تشغيل التطوير/البناء:
+```bash
+npm run dev
+# أو
+npm run build
+```
+
+### 3) Laravel Mix / بدون Bundler (بديل سريع)
+انسخ ملفات الحزمة إلى `public/` ثم ضمّها مباشرة:
+- من:
+  - `node_modules/exeditor/dist/exeditor.js`
+  - `node_modules/exeditor/dist/exeditor.css`
+  - `node_modules/exeditor/dist/svg/`
+- إلى:
+  - `public/vendor/exeditor/exeditor.js`
+  - `public/vendor/exeditor/exeditor.css`
+  - `public/vendor/exeditor/svg/`
+
+ثم في Blade:
+```html
+<link rel="stylesheet" href="{{ asset('vendor/exeditor/exeditor.css') }}">
+<script src="{{ asset('vendor/exeditor/exeditor.js') }}"></script>
+
+<textarea name="content" data-exeditor></textarea>
+<script>
+  EXEditor.attachAll();
+</script>
+```
+
 ### استخدام مع Bundler (Vite/Webpack)
 ```js
 import 'exeditor/dist/exeditor.css';
